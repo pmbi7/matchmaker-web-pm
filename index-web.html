@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Author: Peter Mbi
+        Project: MatchmakerWeb-->
+
+
+
+
+
+<head>
+        <meta charset="UTF-8">
+        <title>Matchmaker Web</title>
+        <link rel="stylesheet" href="Matchmaker-web.css">
+        <img src="Stick-buddies.jpeg" alt="Peter's Picture" style="width:500px;">
+
+    </head>
+
+    <body>
+        <h1>Matchmaker Web</h1>
+     <p>Instruction: Matchmaker allows one to see if we share the same interest.
+        Each question will have 5 answers you can choose between 1-5. The answers to each statement will range between strongly disagree(1)and strongly agree(5)</p>
+       
+        <label> Playstation 5 is the best gaming console of all time.</label><br />
+        <select id="q1">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neutral</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+        </select>
+
+
+
+
+
+        <br /><br/>
+
+        <label> Summer is the best season.</label><br />
+        <select id="q2">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neutral</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+        </select>
+        <br /><br/>
+
+        <label> Traveling is always enjoyable.</label><br />
+        <select id="q3">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neutral</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+        </select>
+        <br /><br/>
+
+
+        <label> Track and Field is the best sport of all time</label><br />
+        <select id="q4">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neutral</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+        </select>
+        <br /><br/>
+
+
+
+        <label> Less procrastination allows one to create better study habits.</label><br />
+        <select id="q5">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neutral</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+        </select>
+
+
+
+
+        <br /><br /><br/>
+        <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+
+        <p id="compatibility"> </p>
+
+     <script>
+        console.log("Starting Matchmaker Web...")
+        
+        function calculateCompatibility(){
+        console.log("calculating compatiblity")
+
+
+
+
+
+        const DESIRED_RESPONSE= [
+
+        5, /*strongly agree*/ 
+        5, /*strongly agree*/
+        5, /*strongly agree*/
+        5, /*strongly agree*/
+        5, /*strongly agree*/
+          ]
+
+
+          const MAX_SCORE = 25
+
+        // Current values from dropdown controls
+
+        let question1Response = document.getElementById("q1"). selectedOptions[0].value;
+        let question2Response = document.getElementById("q2"). selectedOptions[0].value;
+        let question3Response = document.getElementById("q3"). selectedOptions[0].value;
+        let question4Response = document.getElementById("q4"). selectedOptions[0].value;
+        let question5Response = document.getElementById("q5"). selectedOptions[0].value;
+
+
+        // Optionally log the values with questions 1-5
+
+        console.log("Question 1 Answer:")
+        console.log(document.getElementById("q1").selectedOptions[0].text)
+        console.log(document.getElementById("q1").selectedOptions[0].value)
+        console.log(question1Response)
+
+
+        console.log("Question 2 Answer:")
+        console.log(document.getElementById("q2").selectedOptions[0].text);
+        console.log(document.getElementById("q2").selectedOptions[0].value);
+        console.log(question2Response);
+
+
+
+        console.log("Question 3 Answer:")
+        console.log(document.getElementById("q3").selectedOptions[0].text);
+        console.log(document.getElementById("q3").selectedOptions[0].value);
+        console.log(question3Response);
+
+
+
+        console.log("Question 4 Answer:")
+        console.log(document.getElementById("q4").selectedOptions[0].text);
+        console.log(document.getElementById("q4").selectedOptions[0].value);
+        console.log(question4Response);
+
+
+
+        console.log("Question 5 Answer:")
+        console.log(document.getElementById("q5").selectedOptions[0].text);
+        console.log(document.getElementById("q5").selectedOptions[0].value);
+        console.log(question5Response);
+
+
+        // Calculate Compatibility Score.
+
+        let question1Score=5-Math.abs(question1Response-DESIRED_RESPONSE[0]);
+        let question2Score=5-Math.abs(question2Response-DESIRED_RESPONSE[1]);
+        let question3Score=5-Math.abs(question3Response-DESIRED_RESPONSE[2]);
+        let question4Score=5-Math.abs(question4Response-DESIRED_RESPONSE[3]);
+        let question5Score=5-Math.abs(question5Response-DESIRED_RESPONSE[4]);
+        
+        console.log("c1="+question1Score);
+        console.log("c2="+question2Score);
+        console.log("c3="+question3Score);
+        console.log("c4="+question4Score);
+        console.log("c5="+question5Score);
+
+        
+
+
+        let totalScore= question1Score + question2Score + question3Score + question4Score +question5Score;
+
+
+        //Convert totalScore to %
+        totalScore *= 100/MAX_SCORE;
+        totalScore = Math.round(totalScore) 
+        console.log("totalScore="+ totalScore)
+
+        if (totalScore=Range()) {
+         
+        } else {
+         
+        }
+
+        document.getElementById("compatibility").innerHTML= "Your compatibility score is:"+ totalScore+ "%";
+        }
+
+
+     </script>
+    </body>
+</html>
